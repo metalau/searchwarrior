@@ -25,7 +25,7 @@ export class AppComponent {
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Search failde: ', err);
+        console.error('Search failed: ', err);
         this.isLoading = false;
       }
     });

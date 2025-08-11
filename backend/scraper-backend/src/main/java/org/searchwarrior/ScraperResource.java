@@ -34,6 +34,9 @@ public class ScraperResource {
 
     @GET
     public List<CardDTO> scrape(@QueryParam("url") String url) {
+        if (url == null || url.isBlank()) {
+            url = "https://bangbros.com/videos";
+        }
         return scraperService.scrapedCards(url);
 
     }
