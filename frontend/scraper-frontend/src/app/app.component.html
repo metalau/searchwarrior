@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+
+  <div *ngIf="isLoading" class="alert alert-info">
+    Searching...
+  </div>
+
+  <div *ngIf="!isLoading &&  results.length === 0">
+    <p>No results found.</p>
+  </div>
+
+  <div class="row" *ngIf="results.length > 0">
+    <div class="col-md-4" *ngFor="let item of results">
+      <div class="card">
+        <img *ngIf="item.imgUrl" [src]="item.imgUrl" class="card-img-top" alt="{{item.title}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">
+            <strong>Site:</strong> {{ item.siteName }}<br>
+            <strong>Tags:</strong> {{ item.tags.join(', ') }}
+          </p>
+          <a *ngIf="item.vidUrl" [href]="item.vidUrl" target="_blank" class="btn btn-outline-primary">Watch Video</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
